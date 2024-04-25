@@ -59,10 +59,10 @@ public class Main {
                     menuTreinoIniciado(aluno);
                     break;
                 case 2:
-                    UsuarioManager.relatorioDatas(aluno);
+                    UsuarioManager.Relatorios.relatorioDatas(aluno);
                     break;
                 case 3:
-                    UsuarioManager.relatorioCargas(aluno);
+                    UsuarioManager.Relatorios.relatorioCargas(aluno);
                     break;
                 case 0:
                     return; // Retorna ao menu principal
@@ -74,17 +74,16 @@ public class Main {
     public static void menuTreinoIniciado(Aluno aluno){
         Scanner scanner = new Scanner(System.in);
         TreinoDataDAO treinoDataDAO = new TreinoDataDAO();
-        AlunosExerciciosInfoDAO alunosExerciciosInfoDAO = new AlunosExerciciosInfoDAO();
 
         Treino treino = new Treino();
         System.out.print("Treinos: ");
-        UsuarioManager.listarIdTreinos();
+        UsuarioManager.Treinos.listarIdTreinos();
         System.out.print("Digite o ID do treino: ");
         int idTreino = scanner.nextInt();
         treino.setId(idTreino);
 
         int pk = treinoDataDAO.cadastrarTreino(treino,aluno);
-        UsuarioManager.associarInfo(treino,aluno,pk);
+        UsuarioManager.Treinos.associarInfo(treino,aluno,pk);
 
         int opcao = 0;
         while (opcao != 4) {
@@ -100,13 +99,13 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    UsuarioManager.listarExerciciosPeso(treino);
+                    UsuarioManager.Treinos.listarExerciciosPeso(treino);
                     break;
                 case 2:
-                    UsuarioManager.concluirExercicio(pk);
+                    UsuarioManager.Treinos.concluirExercicio(pk);
                     break;
                 case 3:
-                    UsuarioManager.alterarCarga(aluno,treino,pk);
+                    UsuarioManager.Treinos.alterarCarga(aluno,treino,pk);
                     break;
                 case 4:
                     treinoDataDAO.finalizarTreino(pk);
@@ -167,16 +166,16 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    UsuarioManager.cadastrarUsuario(alunoDAO);
+                    UsuarioManager.Instrutor.cadastrarUsuario(alunoDAO);
                     break;
                 case 2:
-                    UsuarioManager.deletarAluno(alunoDAO);
+                    UsuarioManager.Instrutor.deletarAluno(alunoDAO);
                     break;
                 case 3:
-                    UsuarioManager.atualizarAluno(alunoDAO);
+                    UsuarioManager.Instrutor.atualizarAluno(alunoDAO);
                     break;
                 case 4:
-                    UsuarioManager.listarTodosUsuarios(alunoDAO);
+                    UsuarioManager.Instrutor.listarTodosUsuarios(alunoDAO);
                     break;
                 case 0:
                     return; // Retorna ao menu de instrutor
@@ -200,10 +199,10 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    UsuarioManager.associarPlano(alunoPlanoDAO, planoDAO, alunoDAO);
+                    UsuarioManager.Planos.associarPlano(alunoPlanoDAO, planoDAO, alunoDAO);
                     break;
                 case 2:
-                    UsuarioManager.desassociarPlano(alunoPlanoDAO,alunoDAO);
+                    UsuarioManager.Planos.desassociarPlano(alunoPlanoDAO,alunoDAO);
                     break;
                 case 3:
                     return; // Retorna ao menu anterior
@@ -228,15 +227,15 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    UsuarioManager.cadastrarExercicio(exercicioDAO,musculoDAO);
+                    UsuarioManager.Exercicios.cadastrarExercicio(exercicioDAO,musculoDAO);
                     break;
                 case 2:
-                    UsuarioManager.deletarExercicio(exercicioDAO);
+                    UsuarioManager.Exercicios.deletarExercicio(exercicioDAO);
                     break;
                 case 3:
-                    UsuarioManager.alterarExercicio(exercicioDAO);
+                    UsuarioManager.Exercicios.alterarExercicio(exercicioDAO);
                 case 4:
-                    UsuarioManager.listarExercicios(exercicioDAO);
+                    UsuarioManager.Exercicios.listarExercicios(exercicioDAO);
                 case 0:
                     return;
                 default:
@@ -259,16 +258,16 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    UsuarioManager.cadastrarPlano(planoDAO);
+                    UsuarioManager.Planos.cadastrarPlano(planoDAO);
                     break;
                 case 2:
-                    UsuarioManager.deletarPlano(planoDAO);
+                    UsuarioManager.Planos.deletarPlano(planoDAO);
                     break;
                 case 3:
-                    UsuarioManager.atualizarPlano(planoDAO);
+                    UsuarioManager.Planos.atualizarPlano(planoDAO);
                     break;
                 case 4:
-                    UsuarioManager.listarTodosPlanos(planoDAO);
+                    UsuarioManager.Planos.listarTodosPlanos(planoDAO);
                     break;
                 case 0:
                     return; // Retorna ao menu de instrutor
@@ -294,16 +293,16 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    UsuarioManager.cadastrarTreino(treinoDAO, exercicioDAO);
+                    UsuarioManager.Treinos.cadastrarTreino(treinoDAO, exercicioDAO);
                     break;
                 case 2:
-                    UsuarioManager.deletarTreino(treinoDAO);
+                    UsuarioManager.Treinos.deletarTreino(treinoDAO);
                     break;
                 case 3:
-                    UsuarioManager.atualizarTreino(treinoDAO);
+                    UsuarioManager.Treinos.atualizarTreino(treinoDAO);
                     break;
                 case 4:
-                    UsuarioManager.listarIdTreinos();
+                    UsuarioManager.Treinos.listarIdTreinos();
                     break;
                 case 0:
                     return; // Retorna ao menu de instrutor
